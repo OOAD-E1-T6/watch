@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class Timekeeping {
     private LocalDateTime time;
+    private boolean is24HourFormat = false;
 
     public LocalDateTime getCurrentTime() {
         return time;
@@ -12,7 +13,9 @@ public class Timekeeping {
     public void enterTimeSettingMode() {
     }
 
-    public void toggleTimeFormat() {
+    public boolean toggleTimeFormat() {
+        is24HourFormat = !is24HourFormat;
+        return is24HourFormat;
     }
 
     public void selectUnitForSetting() {

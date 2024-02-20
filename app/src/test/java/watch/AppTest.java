@@ -7,8 +7,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test
+    public void testToggleTimeFormat() {
+        Timekeeping controller = new Timekeeping();
+        boolean mode1 = controller.toggleTimeFormat();
+        boolean mode2 = controller.toggleTimeFormat();
+        assertTrue(mode1 != mode2, "toggleTimeFormat should return the opposite value each time it is called");
     }
 }
