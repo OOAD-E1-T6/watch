@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import io.cucumber.java.en.*;
 
-public class TimekeepingTest {
+public class TimekeepingToggleTimeFormatTest {
     Timekeeping timekeeping = new Timekeeping();
     boolean mode1;
     boolean mode2;
