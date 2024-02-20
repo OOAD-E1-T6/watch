@@ -20,6 +20,40 @@ public class WatchController {
         this.alarmManager.setSelectedAlarm(h, m);
     }
 
+    public boolean pressButton(String key, boolean isLongPress) {
+        switch (this.mode) {
+            case 0:
+                return false;
+            case 1:
+                return false;
+            case 2:
+                switch(key) {
+                    case "A":
+                        this.alarmManager.savedAlarm();
+                        break;
+                    case "B":
+                        if (isLongPress) {
+                            return this.alarmManager.addAlarm();
+                        }
+                        break;
+                    case "C":
+                        this.alarmManager.selectedUnitForSetting();
+                        break;
+                    case "D":
+                        this.alarmManager.increaseTime();
+                        break;
+                    default:
+                        break;
+
+                }
+                return false;
+            case 3:
+                return false;
+            default:
+                return false;
+        }
+    }
+
     public void enterTimeSettingMode() {
     }
 
