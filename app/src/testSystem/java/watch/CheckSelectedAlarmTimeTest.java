@@ -6,34 +6,38 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
 enum WatchMode {
-    TimeKeeping, StopWatch, Alarm, Timer
+    TimeKeeping, StopWatch, Alarm, Timer;
+
+    private static final WatchMode[] vals = values();
+    
+    public WatchMode next() {
+        return vals[(this.ordinal() + 1) % vals.length];
+    }
 }
 
 
 public class CheckSelectedAlarmTimeTest {
-    public WatchMode mode = WatchMode.TimeKeeping;
+    public WatchController controller = new WatchController();
 
     @Given("현재 모드는 {WatchMode} 이다")
     public void setMode(WatchMode watchMode) {
-        this.mode = watchMode;
+        controller.setMode(1);
     }
 
-    @when("사용자는 {String} 버튼을 누른다.")
-    public void keyPress(String key) {
-        switch (key) {
-            case "A":
-            break;
+    @Given("현재 설정된 알람 시간은 {int}시 {int}분 이다.") 
+    public void setSelectedAlarm(int h, int m) {
+        controller.setAlarmTime(h,m);
+    }
 
-            case "B":
-            break;
+    @When("사용자는 C 버튼을 누른다.")
+    public void PressButtonC(String key) {
+        controller.changeMode();
+    }
 
-            case "C":
-            break;
-
-            case "D":
-            break;
-            default:
-            break;
-        }
+    @Then("현재 알람시간을 표시한다({int}시 {int}분)")
+    public void getSelectedAlarmTime(int resultHour, int resultMin) {
+        AlarmTime time = controller.getAlarmTime();
+        assertTrue(time.getHour() == resultHour);
+        assertTrue(time.getMin() == resultMin);
     }
 }
