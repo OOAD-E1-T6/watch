@@ -6,7 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class EnterTempSettingModeTest {
+public class SetTemperatureAlarmTest {
     public WatchController controller = new WatchController();
     
     // Scenario: User set temperature alarm
