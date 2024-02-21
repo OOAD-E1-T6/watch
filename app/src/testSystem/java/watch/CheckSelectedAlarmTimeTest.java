@@ -21,7 +21,7 @@ public class CheckSelectedAlarmTimeTest {
 
     @Given("현재 모드는 {WatchMode} 이다")
     public void setMode(WatchMode watchMode) {
-        controller.setMode(1);
+        controller.setMode(WatchMode.StopWatch);
     }
 
     @Given("현재 설정된 알람 시간은 {int}시 {int}분 이다.") 

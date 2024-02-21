@@ -11,7 +11,7 @@ public class AddNewAlarmTest {
 
     @Given("현재 모드는 알람모드 이다.")
     public void setAlramMode() {
-        controller.setMode(2);
+        controller.setMode(WatchMode.ALARM);
     }
 
     @When("사용자는 B 버튼을 길게 눌러 addAlarm을 실행한다") 
